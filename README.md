@@ -2,21 +2,31 @@
 
 ## 前言
 
-这篇md是学习linux kernel pwn过程中的知识梳理和总结。一般kernel pwn题目会给出编译好的内核及模块，第一、二部分的编译和编写内核模块过程可以直接省掉。kernle pwn涉及的知识点和坑也比较多，而这个x64内核ROP很适合刚开始学习。
+这篇md是我学习linux kernel pwn过程中的知识梳理和总结。一般kernel pwn题目会给出编译好的内核及模块，第一、二部分的编译和编写内核模块过程可以直接省掉。kernle pwn涉及的知识点和坑也比较多，而这个x64内核ROP很适合刚开始学习。
+
+
 
 ## 参考
 
 **先知社区：**
+
 [Linux kernle Pwn技巧总结1](https://xz.aliyun.com/t/4529)
 
 [linux kernel pwn notes](https://xz.aliyun.com/t/2306)
-**pwn4.fun：**
-[Linux x64内核ROP](http://pwn4.fun/2017/06/28/Linux-x64%E5%86%85%E6%A0%B8ROP/)
+
 **其它：**
+
+[Linux x64内核ROP](http://pwn4.fun/2017/06/28/Linux-x64%E5%86%85%E6%A0%B8ROP/)
+
 [Linux Kernel ROP - Ropping your way to # (Part 1)](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/)
+
 [Linux Kernel ROP - Ropping your way to # (Part 2)](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-2/)
+
 [Linux Kernel Pwn ABC(Ⅰ)](http://m4x.fun/post/linux-kernel-pwn-abc-1/)
+
 [Linux Kernel Pwn ABC(II)](http://m4x.fun/post/linux-kernel-pwn-abc-2/)
+
+
 
 ## 一、编译linux内核与busybox
 
@@ -396,6 +406,8 @@ insmod: can't insert 'drv.ko': invalid module format
 
 > MODULE_INFO(vermagic,"3.13.11 SMP mod_unload "); 
 
+
+
 ## 三、调试
 
 ### 1. qemu
@@ -416,6 +428,8 @@ pwndbg> target remote :1234 (gdb远程连接到qemu)
 pwndbg> add-symbol-file core/drv.ko 0xffffffffa0000000 (增加内核模块的符号文件)
 pwndbg> b *0xffffffffa0000141  (在call rax处下断点）
 ```
+
+
 
 ## 四、ROP提权的基础思路
 
@@ -520,6 +534,8 @@ static void save_state() {
         : "=r" (user_cs), "=r" (user_ss), "=r" (user_rflags) : : "memory");
 }
 ```
+
+
 
 ## 五、开始ROP
 
