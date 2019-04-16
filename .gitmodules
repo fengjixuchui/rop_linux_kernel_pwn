@@ -1,0 +1,3 @@
+[submodule "kernel_rop"]
+	path = kernel_rop
+	url = https://github.com/vnik5287/kernel_rop
