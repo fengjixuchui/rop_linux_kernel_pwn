@@ -2,19 +2,20 @@
 
 ## 前言
 
-这篇md是学习linux kernel pwn过程中的知识梳理和总结。一般kernel pwn题目会给出编译好的内核及模块，第一、二部分的编译和编写内核模块过程可以直接省掉。kernle pwn涉及的知识点和坑也比较多，而这个x64内核ROP很适合刚开始入手。
+这篇md是学习linux kernel pwn过程中的知识梳理和总结。一般kernel pwn题目会给出编译好的内核及模块，第一、二部分的编译和编写内核模块过程可以直接省掉。kernle pwn涉及的知识点和坑也比较多，而这个x64内核ROP很适合刚开始学习。
 
-## 参考资料：
+## 参考
 
-> [Linux kernle Pwn技巧总结1]: https://xz.aliyun.com/t/4529
-> [linux kernel pwn notes]: https://xz.aliyun.com/t/2306
-> [Linux x64内核ROP]: http://pwn4.fun/2017/06/28/Linux-x64%E5%86%85%E6%A0%B8ROP/
-> [Linux Kernel ROP - Ropping your way to # (Part 1)]: https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/
-> [Linux Kernel ROP - Ropping your way to # (Part 2)]: https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-2/
-> [Linux Kernel Pwn ABC(Ⅰ)]: http://m4x.fun/post/linux-kernel-pwn-abc-1/
-> [Linux Kernel Pwn ABC(II)]: http://m4x.fun/post/linux-kernel-pwn-abc-2/
-
-
+>先知社区：
+>[Linux kernle Pwn技巧总结1](https://xz.aliyun.com/t/4529)
+>[linux kernel pwn notes](https://xz.aliyun.com/t/2306)
+>pwn4.fun：
+>[Linux x64内核ROP](http://pwn4.fun/2017/06/28/Linux-x64%E5%86%85%E6%A0%B8ROP/)
+>其它：
+>[Linux Kernel ROP - Ropping your way to # (Part 1)](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/)
+>[Linux Kernel ROP - Ropping your way to # (Part 2)](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-2/)
+>[Linux Kernel Pwn ABC(Ⅰ)](http://m4x.fun/post/linux-kernel-pwn-abc-1/)
+>[Linux Kernel Pwn ABC(II)](http://m4x.fun/post/linux-kernel-pwn-abc-2/)
 
 ## 一、编译linux内核与busybox
 
@@ -478,7 +479,7 @@ ROP链如下：
 |----------------------|
 ```
 
-注意：**此外有两个pop rdx; ret**。这是因为在call rdx后并没有ret，在调用call rdx时，call指令会将内核空间处call的下一条指令push到堆栈中，call完后返回继续执行原call后面的指令；在call rdx时执行pop rdx; ret，将call指令后的地址pop后，这时ret的指向的堆栈中正是我们期望的commit_creds。
+注意：**ROP链中的pop rdx; ret**。这是因为在call rdx后并没有ret，在调用call rdx时，call指令会将内核空间处call的下一条指令push到堆栈中，call完后返回继续执行原call后面的指令；在call rdx时执行pop rdx; ret，将call指令后的地址pop后，这时ret的指向的堆栈中正是我们期望的commit_creds。
 
 在完成提权后，我们还需要返回到用户空间里执行system('/bin/sh')，用下面的两个指令：
 
