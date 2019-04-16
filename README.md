@@ -6,16 +6,17 @@
 
 ## 参考
 
->先知社区：
->[Linux kernle Pwn技巧总结1](https://xz.aliyun.com/t/4529)
->[linux kernel pwn notes](https://xz.aliyun.com/t/2306)
->pwn4.fun：
->[Linux x64内核ROP](http://pwn4.fun/2017/06/28/Linux-x64%E5%86%85%E6%A0%B8ROP/)
->其它：
->[Linux Kernel ROP - Ropping your way to # (Part 1)](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/)
->[Linux Kernel ROP - Ropping your way to # (Part 2)](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-2/)
->[Linux Kernel Pwn ABC(Ⅰ)](http://m4x.fun/post/linux-kernel-pwn-abc-1/)
->[Linux Kernel Pwn ABC(II)](http://m4x.fun/post/linux-kernel-pwn-abc-2/)
+**先知社区：**
+[Linux kernle Pwn技巧总结1](https://xz.aliyun.com/t/4529)
+
+[linux kernel pwn notes](https://xz.aliyun.com/t/2306)
+**pwn4.fun：**
+[Linux x64内核ROP](http://pwn4.fun/2017/06/28/Linux-x64%E5%86%85%E6%A0%B8ROP/)
+**其它：**
+[Linux Kernel ROP - Ropping your way to # (Part 1)](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/)
+[Linux Kernel ROP - Ropping your way to # (Part 2)](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-2/)
+[Linux Kernel Pwn ABC(Ⅰ)](http://m4x.fun/post/linux-kernel-pwn-abc-1/)
+[Linux Kernel Pwn ABC(II)](http://m4x.fun/post/linux-kernel-pwn-abc-2/)
 
 ## 一、编译linux内核与busybox
 
